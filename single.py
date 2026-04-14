@@ -630,7 +630,7 @@ def build_application() -> Application:
         """Log any error that happens in handlers."""
         logger.error("❌ Exception while handling an update:", exc_info=context.error)
 
-    app.add_error_handler(error_handler)   # ←←← Ei line ta add koro
+    app.add_error_handler(error_handler)
 
     # ── Command handlers ───────────────────────────────────────────────────────
     app.add_handler(CommandHandler("start", cmd_start, filters=filters.ChatType.PRIVATE))
