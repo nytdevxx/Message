@@ -18,7 +18,7 @@ import re
 import sqlite3
 import time
 from contextlib import contextmanager
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 from dotenv import load_dotenv
@@ -150,7 +150,7 @@ def init_db() -> None:
 
 def upsert_group(group_id: int, title: str) -> None:
     """Insert or update a group record."""
-    now = datetime.utcnow().isoformat()
+    now = datetime.now(timezone.utc).isoformat()
     with db_cursor() as cur:
         cur.execute("""
             INSERT INTO groups (group_id, title, added_at)
@@ -161,7 +161,7 @@ def upsert_group(group_id: int, title: str) -> None:
 
 def upsert_user(user_id: int, display_name: str) -> None:
     """Insert or update a user record."""
-    now = datetime.utcnow().isoformat()
+    now = datetime.now(timezone.utc).isoformat()
     with db_cursor() as cur:
         cur.execute("""
             INSERT INTO users (user_id, display_name, updated_at)
