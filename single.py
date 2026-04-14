@@ -402,7 +402,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     bot_username = bot_info.username
 
     # FIX: plain HTTPS URL — NOT Markdown link syntax
-    add_url = f"[t.me](https://t.me/{bot_username}?startgroup=true)"
+    add_url = f"https://t.me/{bot_username}?startgroup=true"
 
     welcome_text = (
         "👋 *Welcome to the Group Engagement Bot\\!*\n\n"
