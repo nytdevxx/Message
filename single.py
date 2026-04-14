@@ -625,6 +625,13 @@ def build_application() -> Application:
         .build()
     )
 
+    # ── Error handler (NEW) ────────────────────────────────────────────────────
+    async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        """Log any error that happens in handlers."""
+        logger.error("❌ Exception while handling an update:", exc_info=context.error)
+
+    app.add_error_handler(error_handler)   # ←←← Ei line ta add koro
+
     # ── Command handlers ───────────────────────────────────────────────────────
     app.add_handler(CommandHandler("start", cmd_start, filters=filters.ChatType.PRIVATE))
     app.add_handler(CommandHandler("leaderboard", cmd_leaderboard, filters=filters.ChatType.GROUPS))
@@ -641,8 +648,8 @@ def build_application() -> Application:
     app.add_handler(
         MessageHandler(
             (filters.ChatType.GROUPS)
-            & (~filters.COMMAND)
-            & (~filters.StatusUpdate.ALL),
+            & (\~filters.COMMAND)
+            & (\~filters.StatusUpdate.ALL),
             handle_group_message,
         )
     )
