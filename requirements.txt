@@ -1,4 +1,2 @@
-pyTelegramBotAPI
-flask
-apscheduler
-pytz
+pyTelegramBotAPI==4.18.0
+yt-dlp>=2024.1.1
