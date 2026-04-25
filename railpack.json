@@ -1,24 +1,25 @@
 {
   "$schema": "https://schema.railpack.com",
   "buildAptPackages": [
+    "build-essential",
+    "pkg-config",
+    "python3-dev",
     "libavformat-dev",
     "libavcodec-dev",
-    "libavdevice-dev",
     "libavutil-dev",
-    "libavfilter-dev",
     "libswscale-dev",
     "libswresample-dev",
-    "pkg-config"
+    "libavfilter-dev",
+    "libavdevice-dev",
+    "ffmpeg"
   ],
-  "deploy": {
-    "aptPackages": [
-      "libavformat-dev",
-      "libavcodec-dev",
-      "libavdevice-dev",
-      "libavutil-dev",
-      "libavfilter-dev",
-      "libswscale-dev",
-      "libswresample-dev"
-    ]
-  }
+  "aptPackages": [
+    "ffmpeg",
+    "libavformat58",
+    "libavcodec58",
+    "libavutil56",
+    "libswscale5",
+    "libswresample3",
+    "libavfilter7"
+  ]
 }
